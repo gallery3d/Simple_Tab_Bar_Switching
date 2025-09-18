@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- all p -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基本布局</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #son1 {
+            width: 500px;
+            height: 30px;
+            border: yellow solid;
+        }
+
+        li {
+            list-style: none;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            float: left;
+            background-color: gray;
+            /*   gainsboro*/
+            color: black;
+
+
+        }
+
+        #father {
+            border: solid black;
+            width: 507px;
+            height: 300px;
+            position: absolute;
+        }
+
+        p {
+            display: inline-block;
+        }
+
+        .gray {
+            background-color: gray;
+        }
+
+        .no {
+            display: none;
+        }
+
+        .yes {
+            display: block;
+        }
+
+        h6 {
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1. (简答题) 自定义内容和样式，实现Tab栏切换。
+    （答案区粘贴代码，附件上传项目文件压缩包） -->
+    <div id="father">
+        <div id="son1">
+            <ul>
+                <li>输入密码</li>
+                <li>新闻</li>
+                <li>地图</li>
+                <li>视频</li>
+                <li>图片</li>
+            </ul>
+        </div>
+        <div id="son2">
+            <p class="no">1</p>
+            <p class="no">2</p>
+            <p class="no">3</p>
+            <p class="no">4</p>
+            <p class="no">5</p>
+        </div>
+
+    </div>
+</body>
+<script>
+    // onmouseover  onmouseout
+    var lis = document.querySelectorAll("li");
+    var p = document.querySelectorAll("p");
+
+
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].setAttribute("index", i);//
+
+        lis[i].onmouseover = function () {
+
+            // for (var j = 0; j < lis.length; j++) {
+            //     // lis[j].style.backgroundColor = "";
+            //     // p[j].setAttribute("class", "no");
+            // }
+            this.style.backgroundColor = "red";
+            this.style.color = "white";
+
+            var index = this.getAttribute('index');
+
+            p[index].setAttribute("class", "yes");
+            // 也可以用 p[index].className = "yes";
+
+            //p[i]显示未定义
+            // p[i].className="yes";//错这了
+        }
+
+
+        lis[i].onmouseout = function () {
+            for (var k = 0; k < lis.length; k++) {
+                lis[k].style.backgroundColor = "gray";
+                lis[k].style.color = "black";
+                p[k].setAttribute("class", "no");
+
+            }
+
+        }
+
+
+    }
+
+</script>
+
+</html>
+<!-- 先把shadow1做好，再做剩下的盒子 -->

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo1</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #father {
+            border: solid black;
+            width: 507px;
+            height: 300px;
+            position: absolute;
+        }
+
+        #son1 {
+            width: 500px;
+            height: 30px;
+            border: yellow solid 3px;
+        }
+
+        li {
+            list-style: none;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            float: left;
+            background-color: gray;
+            color: black;
+        }
+
+        .gray {
+            background-color: gray;
+        }
+
+        .no {
+            display: none;
+        }
+
+        .yes {
+            display: block;
+        }
+
+        #shadow1 img {
+            position: relative;
+            top: 3px;
+        }
+
+        span {
+            display: inline-block;
+            font-size: 14px;
+            color: gray;
+        }
+
+        /* 显示文本： display:inline-block
+           隐藏文本：display: none*/
+
+        #shadow1 h6 {
+            font-weight: 500;
+        }
+
+        #shadow1 {
+            background: #c6c6d4;
+            width: 508px;
+            height: 266px;
+            position: relative;
+            top: 0px;
+        }
+
+        input {
+            outline: none;
+        }
+
+        #shadow2 {
+            background: beige;
+            width: 508px;
+            height: 264px;
+            position: relative;
+            top: 2px;
+            display: none;
+        }
+
+        /*img h4 p img p(a) */
+        #shadow2 img:nth-of-type(1),
+        #shadow2 h4,
+        #shadow2 p:nth-of-type(1),
+        #shadow2 img:nth-of-type(2),
+        #shadow2 p:nth-of-type(2) a {
+            margin-left: 100px;
+        }
+
+        #shadow2 img:nth-of-type(1) {
+            width: 25px;
+            float: left;
+
+        }
+
+        #shadow2 p:nth-of-type(1) {
+            display: inline-block;
+            margin-top: 2px;
+        }
+
+        #shadow2 img:nth-of-type(2) {
+            width: 110px;
+            height: 120px;
+            margin-left: 105px;
+        }
+
+        #shadow2 p:nth-of-type(2) a {
+            color: black;
+            margin-left: 85px;
+        }
+
+        #shadow3 {
+            background: burlywood;
+            width: 508px;
+            height: 266px;
+            position: relative;
+            top: 0px;
+            display: none;
+        }
+
+        #shadow4 {
+            background: black;
+            width: 508px;
+            height: 267px;
+            position: relative;
+            top: 0px;
+            display: none;
+        }
+
+        #shadow4 button {
+            background: #FF9000;
+            width: 104px;
+            height: 30px;
+            text-align: center;
+            font-size: 15px;
+            margin-left: 300px;
+        }
+
+        #shadow4 button a {
+            /* text-decoration:none; */
+            color: black;
+            font-size: 13px;
+            line-height: 30px;
+        }
+
+        #shadow5 {
+            background: #6b6cbf;
+            width: 503px;
+            height: 260px;
+            position: relative;
+            top: 0px;
+            display: none;
+        }
+
+        #shadow5 img {
+            width: 508px;
+            height: 267px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="father">
+        <div id="son1">
+            <ul>
+                <li>输入密码</li>
+                <li>下载客户端</li>
+                <li>简单计算器</li>
+                <li>视频</li>
+                <li>图片</li>
+            </ul>
+        </div>
+        <div id="son2">
+            <div id="shadow1" class="shadow">
+                <input type="password" oninput="count()">
+                <img src="images/mess.png" alt="">
+                <span>请输入6~16位密码</span>
+                <h6>字符数</h6>
+                <h6>0</h6>
+            </div>
+            <div id="shadow2" class="shadow">
+                <img src="images/computerIcon.png" alt="">
+                <h4>Windows端</h4>
+                <p>适合win系统设备</p><br>
+                <img src="images/shadow2.png" alt=""><br>
+                <p><a href="https://app.bilibili.com/?spm_id_from=333.1007.0.0">点击查看更多下载内容></a></p>
+            </div>
+            <div id="shadow3" class="shadow">
+                整数1：<input type="text" value="" id="a"><br><br>
+                整数2：<input type="text" value="" id="b"><br><br>
+                <input type="button" value="相加" id="" onclick="calculator('+')">
+                <input type="button" value="相减" id="" onclick="calculator('-')">
+                <input type="button" value="相乘" id="" onclick="calculator('*')">
+                <input type="button" value="相除" id="" onclick="calculator('/')"><br><br>
+                结果：<input type="text" value="" id="c"><br><br>
+            </div>
+            <div id="shadow4" class="shadow">
+                <button><a href="http://cctv.com">訪問視頻网站</a></button>
+            </div>
+            <div id="shadow5" class="shadow">
+                <img src="images/shadow5.png" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var lis = document.querySelectorAll("li");
+    var shadows = document.querySelectorAll(".shadow");
+    for (var i = 0; i < lis.length; i++) {
+        lis[i].setAttribute("index", i);//很重要
+        lis[i].onmouseover = function () {
+            for (var j = 0; j < lis.length; j++) {
+                // lis[j].style.backgroundColor = "";
+                shadows[j].setAttribute("style", "display:none");
+            }
+            this.style.backgroundColor = "red";
+            this.style.color = "white";
+            index = this.getAttribute('index');//很重要
+            shadows[index].setAttribute("style", "display:block");//很重要
+            //p[index].setAttribute("class", "yes");//p[i]显示未定义
+            // p[i].className="yes";//错这了
+            // console.log(index);
+            // console.log(shadows[index]);
+        }
+        lis[i].onmouseout = function () {
+            for (var k = 0; k < lis.length; k++) {
+                lis[k].style.backgroundColor = "gray";
+            }
+            this.style.color = "black";
+        }
+    }
+    function count() {
+        var input = document.getElementsByTagName("input")[0];
+        var span = document.getElementsByTagName("span")[0];
+        var img = document.getElementsByTagName("img")[0];
+        var length = input.value.length;
+        var h6 = document.getElementsByTagName("h6")[1];
+        h6.innerText = length;
+        if (length == 0) {
+            img.src = "images/mess.png";
+            span.innerText = "请输入6~16位密码";
+            span.style.color = "gray";
+        }
+        if (length >= 6 && length <= 16) {
+            img.src = "images/right.png";
+            span.innerText = "您输入的正确";
+            span.style.color = "green";
+        } if ((length > 0 && length <= 5) || length > 16) {
+            img.src = "images/wrong.png";
+            span.innerText = "您输入的位数不对要求6~16位";
+            span.style.color = "red";
+        }
+    }
+    function calculator(n) {
+        switch (n) {
+            case "+":
+                var a = document.getElementById("a").value;
+                var b = document.getElementById("b").value;
+                var c = (parseFloat(a) + parseFloat(b));
+                document.getElementById("c").value = c;
+                break;
+            case "-":
+                var a = document.getElementById("a").value;
+                var b = document.getElementById("b").value;
+                var c = (parseFloat(a) - parseFloat(b)).toFixed(2);
+                document.getElementById("c").value = c;
+                break;
+            case "*":
+                var a = document.getElementById("a").value;
+                var b = document.getElementById("b").value;
+                var c = (parseFloat(a) * parseFloat(b)).toFixed(3);
+                document.getElementById("c").value = c;
+                break;
+            case "/":
+                var a = document.getElementById("a").value;
+                var b = document.getElementById("b").value;
+                if (b == "0") {
+                    alert(" 不合法输入");
+                    document.getElementById("c").value = "error";
+                    return 0;
+                }
+                var c = (parseFloat(a) / parseFloat(b)).toFixed(2);
+                document.getElementById("c").value = c;
+                break;
+        }
+    }
+</script>
+
+</html>
+<!-- 先把shadow1做好，再做剩下的盒子 -->
